@@ -45,7 +45,7 @@ module Swapi
     end
 
     def execute_request(uri)
-      response = open("#{BASE_URL}/#{uri}").read
+      response = open("#{BASE_URL}/#{uri}", "User-Agent" => "swapi-ruby").read
     end
   end
 end
