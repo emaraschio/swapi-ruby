@@ -8,7 +8,7 @@ A Ruby helper library for swapi.co - the Star Wars API
 Description
 -----------
 
-Documentation: https://swapi-python.readthedocs.org
+Documentation: http://swapi.co/documentation
 
 Installation
 ------------
