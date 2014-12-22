@@ -35,7 +35,7 @@ Methods
 
 These are the top-level methods you can use to get resources from swapi.co
 
-get_person people_id
+get_person(people_id)
 ------------
 
 Return a single ``Person`` resource.
@@ -46,7 +46,7 @@ Example::
     >>> <Person - Luke Skywalker>
 
 
-get_planet planet_id
+get_planet(planet_id)
 ------------
 
 Return a single ``Planet`` resource.
@@ -57,7 +57,7 @@ Example::
     >>> <Planet - Tatooine>
 
 
-get_starship starship_id
+get_starship(starship_id)
 ------------
 
 Return a single ``Starship`` resource.
@@ -68,7 +68,7 @@ Example::
     >>> <Starship - Death Star>
 
 
-get_vehicle vehicle_id
+get_vehicle(vehicle_id)
 ------------
 
 Return a single ``Vehicle`` resource.
@@ -79,7 +79,7 @@ Example::
     >>> <Vehicle - Sand Crawler>
 
 
-get_film film_id
+get_film(film_id)
 ------------
 
 Return a single ``Film`` resource.
@@ -90,7 +90,7 @@ Example::
     >>> <Film - A New Hope>
 
 
-get_all "resource_type"
+get_all("resource_type")
 ------------
 
 Return all the items in a single resource.
