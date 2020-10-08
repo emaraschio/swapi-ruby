@@ -51,7 +51,7 @@ module Swapi
       tries = 3
 
       begin
-        response = uri.open(redirect: false).read
+        response = JSON.parse(uri.open(redirect: false).read)
       rescue OpenURI::HTTPRedirect => e
         uri = e.uri # assigned from the "Location" response header
         retry if (tries -= 1) > 0
