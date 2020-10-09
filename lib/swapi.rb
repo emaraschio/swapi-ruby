@@ -1,14 +1,14 @@
-require 'open-uri'
+require "open-uri"
 
 module Swapi
   class << self
-    BASE_URL = 'http://swapi.co/api'
-    PLANETS = 'planets'
-    PEOPLE = 'people'
-    STARSHIPS = 'starships'
-    VEHICLES = 'vehicles'
-    SPECIES = 'species'
-    FILMS = 'films'
+    BASE_URL = "https://swapi.dev/api".freeze
+    PLANETS = "planets".freeze
+    PEOPLE = "people".freeze
+    STARSHIPS = "starships".freeze
+    VEHICLES = "vehicles".freeze
+    SPECIES = "species".freeze
+    FILMS = "films".freeze
 
     def get_all(type)
       get type
@@ -40,12 +40,23 @@ module Swapi
 
     private
 
-    def get(type, id = '')
+    def get(type, id = "")
       response = execute_request("#{type}/#{id}")
     end
 
     def execute_request(uri)
-      response = open("#{BASE_URL}/#{uri}", "User-Agent" => "swapi-ruby").read
+      url = "#{BASE_URL}/#{uri}"
+
+      uri = URI.parse(url)
+      tries = 3
+
+      begin
+        response = JSON.parse(uri.open(redirect: false).read)
+      rescue OpenURI::HTTPRedirect => e
+        uri = e.uri # assigned from the "Location" response header
+        retry if (tries -= 1) > 0
+        raise
+      end
     end
   end
 end
